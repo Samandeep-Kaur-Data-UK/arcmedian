@@ -1,0 +1,27 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 128 128"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">Arcmedian badge</title>
+  <desc id="desc">
+    Arcmedian monogram presented on a warm architectural tile for brand use.
+  </desc>
+  <rect x="8" y="8" width="112" height="112" rx="30" fill="#69422B" />
+  <rect
+    x="8.5"
+    y="8.5"
+    width="111"
+    height="111"
+    rx="29.5"
+    fill="none"
+    stroke="#8A5A3C"
+    opacity="0.5"
+  />
+  <g fill="none" stroke="#F8F4EC" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 102V72Q28 40 64 40" stroke-width="10" />
+    <path d="M100 102V72Q100 40 64 40" stroke-width="10" />
+    <path d="M64 26V102" stroke-width="12" />
+  </g>
+</svg>

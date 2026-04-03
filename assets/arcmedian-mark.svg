@@ -1,0 +1,17 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 128 128"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">Arcmedian mark</title>
+  <desc id="desc">
+    A structured monogram built from two arcs and a central median to represent
+    reconciled signals and defended measurement.
+  </desc>
+  <g fill="none" stroke="#17202A" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M26 104V72Q26 38 64 38" stroke-width="11" />
+    <path d="M102 104V72Q102 38 64 38" stroke-width="11" />
+    <path d="M64 22V104" stroke-width="13" />
+  </g>
+</svg>

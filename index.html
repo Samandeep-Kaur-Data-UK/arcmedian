@@ -20,6 +20,7 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://arcmedian.co.uk/" />
+    <link rel="icon" type="image/svg+xml" href="assets/arcmedian-favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,8 +32,15 @@
   <body>
     <header class="site-header">
       <div class="shell header-inner">
-        <a class="brand" href="#top">
-          <span class="brand-mark">A</span>
+        <a class="brand" href="#top" aria-label="Arcmedian home">
+          <span class="brand-symbol" aria-hidden="true">
+            <img
+              src="assets/arcmedian-badge.svg"
+              alt=""
+              width="52"
+              height="52"
+            />
+          </span>
           <span class="brand-copy">
             <span class="brand-name">Arcmedian</span>
             <span class="brand-tag">Measurement integrity for commerce brands</span>
@@ -455,9 +463,21 @@
 
     <footer class="site-footer">
       <div class="shell footer-inner">
-        <p>Arcmedian</p>
-        <p>Specialist measurement integrity and marketing intelligence.</p>
-        <p><span id="year"></span> All rights reserved.</p>
+        <div class="footer-brand">
+          <span class="footer-symbol" aria-hidden="true">
+            <img
+              src="assets/arcmedian-mark.svg"
+              alt=""
+              width="36"
+              height="36"
+            />
+          </span>
+          <div class="footer-copy">
+            <p class="footer-name">Arcmedian</p>
+            <p>Specialist measurement integrity and marketing intelligence.</p>
+          </div>
+        </div>
+        <p class="footer-meta"><span id="year"></span> All rights reserved.</p>
       </div>
     </footer>
 

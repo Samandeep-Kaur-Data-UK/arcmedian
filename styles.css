@@ -466,29 +466,40 @@ h3 {
 
 .desk-list {
   display: grid;
-  gap: 0;
+  gap: 12px;
+  margin-top: 14px;
 }
 
-.desk-step,
-.ledger-line {
+.desk-step {
   display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
-  gap: 14px;
-  padding: 15px 0;
-  border-bottom: 1px solid rgba(23, 32, 42, 0.08);
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid rgba(23, 32, 42, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.42);
 }
 
 .desk-step:last-child {
   border-bottom: 0;
 }
 
+.ledger-line {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 4px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(23, 32, 42, 0.08);
+}
+
 .desk-step span {
   display: inline-flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   width: 34px;
-  min-height: 34px;
-  padding-top: 7px;
+  height: 34px;
+  align-self: start;
   border-radius: 999px;
   border: 1px solid rgba(23, 32, 42, 0.08);
   background: rgba(255, 255, 255, 0.72);
@@ -513,13 +524,6 @@ h3 {
   margin-top: auto;
   padding-top: 18px;
   border-top: 1px solid rgba(23, 32, 42, 0.08);
-}
-
-.ledger-line {
-  grid-template-columns: 1fr;
-  align-items: start;
-  gap: 4px;
-  padding: 12px 0;
 }
 
 .ledger-line strong {

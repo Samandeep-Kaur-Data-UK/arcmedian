@@ -45,3 +45,13 @@ const year = document.getElementById("year");
 if (year) {
   year.textContent = new Date().getFullYear();
 }
+
+const updateScrollMeter = () => {
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+  document.documentElement.style.setProperty("--scroll", `${Math.min(progress * 100, 100)}%`);
+};
+
+updateScrollMeter();
+window.addEventListener("scroll", updateScrollMeter, { passive: true });
+window.addEventListener("resize", updateScrollMeter);

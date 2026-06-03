@@ -1,0 +1,22 @@
+# OS / editor
+.DS_Store
+
+# Local dev screenshots and audits (not part of the site)
+.codex-*.png
+.lighthouse/
+.lighthouse2/
+
+# Private / internal documents — must never be published
+Resume/
+Idea/
+saman-company-checklist*.pdf
+STATUS_CHECKPOINT*.md
+
+# Large source dataset (reproducible via case-study/data/README.md)
+case-study/data/*.xlsx
+case-study/data/*.zip
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out

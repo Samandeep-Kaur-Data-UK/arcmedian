@@ -1,0 +1,38 @@
+{
+  "dataset": "UCI Online Retail II (real UK online retailer)",
+  "source_url": "https://archive.ics.uci.edu/dataset/502/online+retail+ii",
+  "generated_from": "case-study/notebook/measurement_integrity_audit.py",
+  "audit": {
+    "raw_line_items": 1067371,
+    "naive_gross_revenue": 19287250.568,
+    "cancellations_lines": 19494,
+    "cancellations_value": -1526667.86,
+    "negative_or_zero_qty_lines": 22950,
+    "zero_or_negative_price_lines": 6207,
+    "missing_customer_lines": 243007,
+    "missing_customer_pct": 22.766872999172733,
+    "admin_nonproduct_lines": 5934,
+    "admin_nonproduct_value": -96396.29200000002,
+    "duplicate_lines": 34335
+  },
+  "headline": {
+    "period": "2009-12-01 to 2011-12-09",
+    "raw_line_items": 1067371,
+    "naive_gross_revenue": 19287250.568,
+    "audited_net_revenue": 18183552.43,
+    "gross_product_sales": 19645603.04,
+    "returns_value": 1462050.61,
+    "trust_gap_pct": 5.722423391082894,
+    "orders": 39516,
+    "identified_customers": 5852,
+    "aov": 497.1556594797044,
+    "return_rate_pct": 7.44212639857962,
+    "missing_customer_pct": 22.766872999172733
+  },
+  "segments": {
+    "champions_customer_pct": 34.859876965140124,
+    "champions_revenue_pct": 76.66956251397814
+  },
+  "retention_month_one_pct": 20.989927377323507,
+  "uk_revenue_share_pct": 85.52937141093734
+}

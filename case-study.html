@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Measurement Integrity Audit | Arcmedian case study</title>
+    <meta
+      name="description"
+      content="A worked Arcmedian analysis: auditing 1.07 million real UK retail transaction lines, reconciling a defensible revenue base, and turning cohort and RFM signals into a decision memo. Real data, real code, real numbers."
+    />
+    <meta name="author" content="Samandeep Kaur" />
+    <meta name="theme-color" content="#17202a" />
+    <meta property="og:title" content="Measurement Integrity Audit — Arcmedian case study" />
+    <meta
+      property="og:description"
+      content="Auditing 1.07m real UK retail transaction lines into a revenue base leadership can defend. Built in Python on a public dataset."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://arcmedian.co.uk/case-study.html" />
+    <meta property="og:image" content="https://arcmedian.co.uk/brand-kit/png/arcmedian-social-card-1200x630.png" />
+    <link rel="canonical" href="https://arcmedian.co.uk/case-study.html" />
+    <link rel="icon" type="image/svg+xml" href="assets/arcmedian-favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="doc">
+    <div class="scroll-meter" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="index.html" aria-label="Arcmedian home">
+          <img src="assets/arcmedian-badge.svg" alt="" width="44" height="44" />
+          <span>
+            <strong>Arcmedian</strong>
+            <small>Defensible measurement</small>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="index.html#method">Method</a>
+          <a href="index.html#work">Work</a>
+          <a href="case-study.html" aria-current="page">Case study</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- INTRO -->
+      <section class="cs-hero">
+        <div class="shell">
+          <a class="cs-back" href="index.html">← Arcmedian</a>
+          <p class="eyebrow">Case study · Measurement integrity</p>
+          <h1 class="cs-title">Turning 1.07 million raw transaction lines into a revenue number leadership can defend.</h1>
+          <p class="cs-lede">
+            A full worked analysis of a real UK online retailer's order ledger.
+            I audited the data for the integrity problems that quietly distort
+            commerce reporting, reconciled a trustworthy revenue base, then read
+            the cohort and customer-value signal into a short decision memo.
+            Every figure on this page is computed by code from the public file.
+            Nothing is hand-entered.
+          </p>
+
+          <dl class="cs-meta">
+            <div>
+              <dt>Dataset</dt>
+              <dd>
+                <a href="https://archive.ics.uci.edu/dataset/502/online+retail+ii" target="_blank" rel="noreferrer">UCI Online Retail II</a>
+                — real transactions from a UK-registered online retailer
+              </dd>
+            </div>
+            <div>
+              <dt>Period</dt>
+              <dd>Dec 2009 – Dec 2011 · two trading years</dd>
+            </div>
+            <div>
+              <dt>Role</dt>
+              <dd>Sole analyst — audit, modelling, charting, write-up</dd>
+            </div>
+            <div>
+              <dt>Built with</dt>
+              <dd>Python · pandas · NumPy · matplotlib</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- HEADLINE RESULTS -->
+      <section class="cs-band">
+        <div class="shell stat-row">
+          <div class="stat">
+            <strong>1,067,371</strong>
+            <span>raw line items audited</span>
+          </div>
+          <div class="stat">
+            <strong>£18.18m</strong>
+            <span>defensible audited net revenue</span>
+          </div>
+          <div class="stat">
+            <strong>22.8%</strong>
+            <span>of lines had no customer attribution</span>
+          </div>
+          <div class="stat">
+            <strong>39,516</strong>
+            <span>orders, 5,852 identified customers</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- THE BRIEF -->
+      <section class="cs-section">
+        <div class="shell cs-prose">
+          <p class="eyebrow">The brief</p>
+          <h2>Before you can interpret performance, you have to trust the file.</h2>
+          <p>
+            A raw commerce export looks authoritative. It is a spreadsheet of
+            orders with a number at the bottom. The trap is that the number at
+            the bottom blends real sales with returns, cancellations, postage
+            lines, manual adjustments, test rows and duplicate records — and a
+            sizable share of the rows cannot even be tied to a customer.
+          </p>
+          <p>
+            Treat that file as truth and every downstream decision inherits the
+            error: revenue is misstated, retention is computed on a fraction of
+            the data, and the team argues about whose dashboard is right instead
+            of what to do next. The job here was to replace that uncertainty
+            with a documented, reproducible standard for what the data can
+            actually prove.
+          </p>
+        </div>
+      </section>
+
+      <!-- STEP 1: AUDIT -->
+      <section class="cs-section">
+        <div class="shell cs-prose">
+          <p class="eyebrow">01 · Audit</p>
+          <h2>What the raw ledger was really made of.</h2>
+          <p>
+            Working in Python, I profiled all 1,067,371 line items against a set
+            of integrity rules before deleting a single row. The point is to
+            measure the problem first, then clean with rules you can defend in a
+            meeting, not silent drops nobody can trace.
+          </p>
+        </div>
+
+        <div class="shell">
+          <table class="audit-table">
+            <thead>
+              <tr>
+                <th scope="col">Integrity flag</th>
+                <th scope="col">Lines</th>
+                <th scope="col">Why it distorts reporting</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Missing customer ID</td>
+                <td>243,007 <span class="pill">22.8%</span></td>
+                <td>Every retention, cohort and lifetime-value figure silently runs on three quarters of the trade.</td>
+              </tr>
+              <tr>
+                <td>Exact duplicate rows</td>
+                <td>34,335</td>
+                <td>Double-counts units and revenue if summed naively.</td>
+              </tr>
+              <tr>
+                <td>Cancellations &amp; credit notes</td>
+                <td>19,494</td>
+                <td>Net against sales inside the file total, hiding the true return signal.</td>
+              </tr>
+              <tr>
+                <td>Negative or zero quantity</td>
+                <td>22,950</td>
+                <td>Returns, write-offs and corrections mixed in with demand.</td>
+              </tr>
+              <tr>
+                <td>Zero or negative price</td>
+                <td>6,207</td>
+                <td>Samples, debt adjustments and data errors that are not sales.</td>
+              </tr>
+              <tr>
+                <td>Non-product admin lines</td>
+                <td>5,934</td>
+                <td>Postage, bank charges, manual adjustments and test codes counted as revenue.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="source-note">Counts computed directly from the source file. A line can carry more than one flag.</p>
+        </div>
+      </section>
+
+      <!-- STEP 2: RECONCILE -->
+      <section class="cs-section">
+        <div class="shell cs-prose">
+          <p class="eyebrow">02 · Reconcile</p>
+          <h2>A revenue number with the workings shown.</h2>
+          <p>
+            After applying documented cleaning rules — product sales only,
+            positive quantity and price, duplicates removed, returns separated
+            rather than buried — the picture resolves into three honest lines.
+            The business did <strong>£19.65m</strong> of gross product sales,
+            carried <strong>£1.46m</strong> of returns and credits
+            (7.4% of gross), for <strong>£18.18m</strong> of audited net revenue.
+          </p>
+        </div>
+
+        <figure class="chart-card">
+          <img src="case-study/charts/01-revenue-assurance.png" width="1478" height="884" alt="Waterfall chart bridging gross product sales of £19.65m, less £1.46m of returns and cancellations, to £18.18m of audited net revenue." loading="lazy" />
+          <figcaption>Returns run at 7.4% of gross. The raw export nets them against sales, so a naive total hides a real operational signal worth watching.</figcaption>
+        </figure>
+
+        <div class="shell cs-grid-2">
+          <figure class="chart-card flush">
+            <img src="case-study/charts/02-monthly-revenue.png" width="1513" height="799" alt="Line chart of monthly audited net revenue from Dec 2009 to Dec 2011 showing a strong pre-Christmas peak of £1.4m." loading="lazy" />
+            <figcaption>A clean seasonal demand curve emerges only once the noise is removed. The two partial end-months read low because the window is cut off, not because trade collapsed — a caveat a naive trend line would miss.</figcaption>
+          </figure>
+          <figure class="chart-card flush">
+            <img src="case-study/charts/03-market-concentration.png" width="1478" height="850" alt="Horizontal bar chart showing the United Kingdom accounts for 85.5% of audited revenue, with EIRE, Netherlands and Germany next." loading="lazy" />
+            <figcaption>85.5% of audited revenue comes from a single market. That is a concentration risk leadership should plan around, and it only becomes visible once the revenue base is trustworthy.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- STEP 3: INTERPRET -->
+      <section class="cs-section">
+        <div class="shell cs-prose">
+          <p class="eyebrow">03 · Interpret</p>
+          <h2>Where the value actually sits.</h2>
+          <p>
+            With a clean customer-level ledger, the more valuable questions open
+            up. I built monthly acquisition cohorts to measure whether new buyers
+            come back, and an RFM model (recency, frequency, monetary) to see how
+            concentrated revenue really is across the customer base.
+          </p>
+        </div>
+
+        <figure class="chart-card">
+          <img src="case-study/charts/04-cohort-retention.png" width="1513" height="1156" alt="Cohort retention heatmap showing the percentage of each monthly acquisition cohort still purchasing in later months, with month-one repeat rates around 20%." loading="lazy" />
+          <figcaption>Each row is a group of customers acquired in the same month; each column is months later. Month-one repeat sits around 21%, so first-order volume flatters the business — the real lever is bringing existing buyers back.</figcaption>
+        </figure>
+
+        <figure class="chart-card">
+          <img src="case-study/charts/05-rfm-segments.png" width="1478" height="833" alt="Bar chart comparing each RFM customer segment's share of customers against its share of revenue, showing Champions are about 35% of customers but 77% of revenue." loading="lazy" />
+          <figcaption>Revenue is heavily concentrated. The Champions segment is roughly 35% of customers but about 77% of revenue — which tells you exactly where retention and CRM spend should point first.</figcaption>
+        </figure>
+      </section>
+
+      <!-- STEP 4: DECISION MEMO -->
+      <section class="cs-section">
+        <div class="shell cs-prose">
+          <p class="eyebrow">04 · Advise</p>
+          <h2>The decision memo.</h2>
+          <p>
+            The deliverable is not a dashboard, it is judgement. Four moves the
+            data supports, each tied to a number above.
+          </p>
+        </div>
+
+        <div class="shell memo-list">
+          <article class="memo-item">
+            <span>01</span>
+            <div>
+              <h3>Report returns as their own line</h3>
+              <p>Returns are 7.4% of gross and currently net silently against sales. Split gross, returns and net so the trading team can actually see the return trend and act on it.</p>
+            </div>
+          </article>
+          <article class="memo-item">
+            <span>02</span>
+            <div>
+              <h3>Close the 22.8% attribution gap</h3>
+              <p>Nearly a quarter of lines have no customer ID, so every retention and lifetime-value figure understates the base. Enforce customer capture at checkout and stitch guest orders before trusting any CLV number.</p>
+            </div>
+          </article>
+          <article class="memo-item">
+            <span>03</span>
+            <div>
+              <h3>De-risk the single-market dependency</h3>
+              <p>85.5% of revenue is one country. EIRE, the Netherlands and Germany are already proven at small scale — the lowest-risk growth is deepening markets that already convert.</p>
+            </div>
+          </article>
+          <article class="memo-item">
+            <span>04</span>
+            <div>
+              <h3>Move budget from acquisition to retention</h3>
+              <p>Champions are ~35% of customers but ~77% of revenue, while month-one repeat is only ~21%. Lifting repeat purchase among existing buyers is cheaper growth than chasing more first orders.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- REPRODUCIBILITY -->
+      <section class="cs-section">
+        <div class="shell repro-box">
+          <p class="eyebrow">How this was built</p>
+          <h2>Reproducible, not decorative.</h2>
+          <p>
+            The whole analysis is a single documented Python script. It loads the
+            public Excel file, runs the integrity audit, applies the cleaning
+            rules, builds the cohort and RFM models, and renders every chart on
+            this page in the Arcmedian palette. Re-run it and the same numbers
+            come out. That is the standard Arcmedian holds client reporting to:
+            if a figure cannot be reproduced from source, it does not get to
+            drive a decision.
+          </p>
+          <ul class="repro-tags">
+            <li>Python 3</li>
+            <li>pandas</li>
+            <li>NumPy</li>
+            <li>matplotlib</li>
+            <li>Data-quality auditing</li>
+            <li>Reconciliation</li>
+            <li>Cohort analysis</li>
+            <li>RFM segmentation</li>
+          </ul>
+          <p class="repro-links">
+            <a class="text-link" href="https://archive.ics.uci.edu/dataset/502/online+retail+ii" target="_blank" rel="noreferrer">Source dataset (UCI) →</a>
+            <a class="text-link" href="case-study/notebook/measurement_integrity_audit.py">Analysis script →</a>
+            <a class="text-link" href="case-study/findings.json">Computed findings (JSON) →</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cs-section cta-section">
+        <div class="shell cta-box">
+          <p class="eyebrow">Work with Arcmedian</p>
+          <h2>Bring your numbers. I will help decide what they can prove.</h2>
+          <p>
+            This is the standard of work behind every Arcmedian engagement — and
+            the kind of analysis I do for data and marketing-intelligence teams.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:samansidhu703@gmail.com">Start a conversation</a>
+            <a class="button button-secondary" href="index.html#founder">About Samandeep</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <div class="footer-brand">
+          <img src="assets/arcmedian-mark.svg" alt="" width="34" height="34" />
+          <span>
+            <strong>Arcmedian</strong>
+            <small>Measurement integrity and marketing intelligence.</small>
+          </span>
+        </div>
+        <p><span id="year"></span> All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

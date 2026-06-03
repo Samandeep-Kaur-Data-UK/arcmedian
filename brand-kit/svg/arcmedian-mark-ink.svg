@@ -1,0 +1,14 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 128 128"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">Arcmedian mark in Ink</title>
+  <desc id="desc">Arcmedian monogram with two arcs and a defended median.</desc>
+  <g fill="none" stroke="#17202A" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M26 104V72Q26 38 64 38" stroke-width="11" />
+    <path d="M102 104V72Q102 38 64 38" stroke-width="11" />
+    <path d="M64 22V104" stroke-width="13" />
+  </g>
+</svg>
